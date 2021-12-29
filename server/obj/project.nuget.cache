@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "7IkCnDVU80fW6JMqDmlWcW3LK9AcI/pgPNuvgDJ3xdTYOnzzb3VRBdjrBtQX5bDNGxWce6r9g4Yg8iI6JyXG4A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\phamt\\Metech\\Project\\my-shop\\server\\server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\phamt\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\phamt\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\phamt\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\phamt\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\phamt\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\phamt\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
