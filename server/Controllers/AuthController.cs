@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using server.Models;
-using server.Services;
+using server.Services.User;
 
 namespace server.Controllers;
 
@@ -16,8 +16,18 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("/sign-up")]
-    public async Task<ActionResult<int>> CreateUser(User user)
+    public async Task<ActionResult<int>> SignUp(User user)
     {
         return await _userService.CreateUser(user);
+    }
+
+    [HttpPost("/sign-in")]
+    public ActionResult<User> SignIn(AuthenticateRequest dataLogin)
+    {
+        var user = _userService.FindUser(dataLogin);
+        
+        if(user == null) return NotFound();
+    
+        return user;
     }
 }
