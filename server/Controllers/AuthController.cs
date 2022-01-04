@@ -24,10 +24,13 @@ public class AuthController : ControllerBase
     [HttpPost("/sign-in")]
     public ActionResult<User> SignIn(AuthenticateRequest dataLogin)
     {
-        var user = _userService.FindUser(dataLogin);
+        var response = _userService.Authenticate(dataLogin);
+
+        if (response == null)
+        {
+            return BadRequest(new {message = "Username or password is incorrect"});
+        }
         
-        if(user == null) return NotFound();
-    
-        return user;
+        return Ok(response);
     }
 }

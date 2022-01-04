@@ -58,3 +58,4 @@ C:\Users\phamt\Metech\Project\my-shop\server\obj\Debug\net6.0\server.dll
 C:\Users\phamt\Metech\Project\my-shop\server\obj\Debug\net6.0\ref\server.dll
 C:\Users\phamt\Metech\Project\my-shop\server\obj\Debug\net6.0\server.pdb
 C:\Users\phamt\Metech\Project\my-shop\server\obj\Debug\net6.0\server.genruntimeconfig.cache
+C:\Users\phamt\Metech\Project\my-shop\server\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

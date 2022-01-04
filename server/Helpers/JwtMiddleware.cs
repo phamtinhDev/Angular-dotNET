@@ -11,10 +11,10 @@ public class JwtMiddleware
     private readonly RequestDelegate _next;
     private readonly AppSetting _appSetting;
 
-    public JwtMiddleware(RequestDelegate next, IOptions<AppSetting> _appSetting) 
+    public JwtMiddleware(RequestDelegate next, IOptions<AppSetting> appSetting) 
     {
         _next = next;
-        _appSetting = _appSetting;
+        _appSetting = appSetting.Value;
     }
 
     public async Task Invoke(HttpContext context, IUserService userService)
@@ -23,11 +23,16 @@ public class JwtMiddleware
             .FirstOrDefault()?
             .Split(" ")
             .Last();
+
+        if (token != null)
+        {
+            AttachUserToContext(context, userService, token);
+        }
         
-        
+        await _next(context);
     }
 
-    private void attachUserToContext(HttpContext context, IUserService userService, string token)
+    private void AttachUserToContext(HttpContext context, IUserService userService, string token)
     {
         try
         {

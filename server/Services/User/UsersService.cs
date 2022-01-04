@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using server.Helpers;
 using server.Providers;
@@ -14,10 +15,10 @@ public class UserService : IUserService
     private readonly DataContext _dbContext;
     private readonly AppSetting _appSetting;
 
-    public UserService(DataContext dbContext, AppSetting appSetting)
+    public UserService(DataContext dbContext, IOptions<AppSetting> appSetting)
     {
         _dbContext = dbContext;
-        _appSetting = appSetting;
+        _appSetting = appSetting.Value;
     }
 
     public async Task<List<Models.User>> GetUsers()
