@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using server.Helpers;
 using server.Models;
 using server.Services.User;
 
@@ -15,10 +16,11 @@ public class UserController : ControllerBase
         _userService = userService;
     }
     
+    [Authorize]
     [HttpGet("/users")]
-    public async Task<List<User>> GetUsers()
+    public List<User> GetUsers()
     {
-        var users = await _userService.GetUsers();
+        var users = _userService.GetUsers();
 
         return users;
     }

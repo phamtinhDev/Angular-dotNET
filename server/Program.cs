@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSetting"));
+builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
 
 // Connection SqlServer
 builder.Services.AddDbContext<DataContext>(options =>
@@ -36,5 +36,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseMiddleware<JwtMiddleware>();
 
 app.Run();

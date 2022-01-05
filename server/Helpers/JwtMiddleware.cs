@@ -46,6 +46,11 @@ public class JwtMiddleware
                 ValidateAudience = false,
                 ClockSkew = TimeSpan.Zero
             }, out SecurityToken validatedToken);
+
+            var jwtToken = (JwtSecurityToken) validatedToken;
+            var userId = int.Parse(jwtToken.Claims.First((x) => x.Type == "id").Value);
+
+            context.Items["User"] = userService.FindUserById(userId);
         }
         catch (Exception e)
         {

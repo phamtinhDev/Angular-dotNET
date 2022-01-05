@@ -16,13 +16,13 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("/sign-up")]
-    public async Task<ActionResult<int>> SignUp(User user)
+    public async Task<ActionResult<int>> SignUp(SignUpRequest user)
     {
         return await _userService.CreateUser(user);
     }
 
     [HttpPost("/sign-in")]
-    public ActionResult<User> SignIn(AuthenticateRequest dataLogin)
+    public ActionResult SignIn(SignInRequest dataLogin)
     {
         var response = _userService.Authenticate(dataLogin);
 

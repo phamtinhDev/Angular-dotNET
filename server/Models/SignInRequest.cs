@@ -2,7 +2,7 @@
 
 namespace server.Models;
 
-public class AuthenticateRequest
+public class SignInRequest
 {
     [Required]
     public string Username { get; set; }

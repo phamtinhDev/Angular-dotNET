@@ -6,11 +6,13 @@ namespace server.Services.User;
 
 public interface IUserService
 {
-    Task<List<Models.User>> GetUsers();
+    List<Models.User> GetUsers();
     
-    Task<int> CreateUser(Models.User user);
+    Task<int> CreateUser(Models.SignUpRequest user);
 
-    Models.User? FindUser(AuthenticateRequest dataLogin);
+    Models.User? FindUser(SignInRequest dataLogin);
 
-    public AuthenticateResponse? Authenticate(AuthenticateRequest data);
+    public Models.User? FindUserById(int Id);
+
+    public SignInResponse? Authenticate(SignInRequest data);
 }

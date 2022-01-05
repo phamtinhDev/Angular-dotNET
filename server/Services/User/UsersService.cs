@@ -21,19 +21,26 @@ public class UserService : IUserService
         _appSetting = appSetting.Value;
     }
 
-    public async Task<List<Models.User>> GetUsers()
+    public List<Models.User> GetUsers()
     {
-        return await _dbContext.User.ToListAsync();
+        return _dbContext.User.ToList();
     }
 
-    public async Task<int> CreateUser(Models.User user)
+    public async Task<int> CreateUser(Models.SignUpRequest user)
     {
-        _dbContext.User.Add(user);
+        var userData = new Models.User
+        {
+            Email = user.Email,
+            Password = user.Password,
+            UserName = user.UserName
+        };
+
+        _dbContext.User.Add(userData);
 
         return await _dbContext.SaveChangesAsync();
     }
 
-    public Models.User? FindUser(AuthenticateRequest dataLogin)
+    public Models.User? FindUser(SignInRequest dataLogin)
     {
         var user = _dbContext.User.FirstOrDefault(user =>
             user.UserName == dataLogin.Username && user.Password == dataLogin.Password);
@@ -42,8 +49,17 @@ public class UserService : IUserService
 
         return user;
     }
+    
+    public Models.User? FindUserById(int id)
+    {
+        var user = _dbContext.User.FirstOrDefault(user => user.Id == id);
 
-    public AuthenticateResponse? Authenticate(AuthenticateRequest data)
+        if (user == null) return null;
+
+        return user;
+    }
+
+    public SignInResponse? Authenticate(SignInRequest data)
     {
         var user = FindUser(data);
         
@@ -51,7 +67,7 @@ public class UserService : IUserService
 
         var token = GenerateJwt(user);
         
-        return new AuthenticateResponse(user, token);
+        return new SignInResponse(user, token);
     }
 
     private string GenerateJwt(Models.User user)
